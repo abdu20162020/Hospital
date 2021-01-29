@@ -76,5 +76,14 @@ public class DepartmenController {
 		department.removeDoctor(doctor);
 		return departmentRepository.save(department);	
 	}
+	@DeleteMapping("/hospital/delete/department/{departmentId}/{doctorId}")
+	public Department deleteDoctors(@PathVariable("departmentId") int departmentId,@PathVariable("doctorId") int doctorId) {
+		Optional<Doctor>doctormentOptional=doctorRepository.findById(doctorId);
+		Doctor doctor=doctormentOptional.get();
+		Optional<Department> departmentOptional=departmentRepository.findById(departmentId);
+		Department department=departmentOptional.get();
+		department.removeDoctor(doctor);
+		return departmentRepository.save(department);	
+	}
 
 }
